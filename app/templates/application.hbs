@@ -1,1 +1,20 @@
-{{outlet}}
+<div class="top-bar small-12 columns">
+  <div class="top-bar-left">
+    <ul class="dropdown menu">
+      <li class="menu-text">Beer Fridge</li>
+    </ul>
+  </div>
+
+
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a class="button" {{action "add-beer"}}><i class="icon">🍺</i>&nbsp;Add beer</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row expanded full-height">
+  <main class="content small-12 columns">
+    {{outlet}}
+  </main>
+</div>

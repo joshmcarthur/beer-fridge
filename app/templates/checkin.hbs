@@ -1,10 +1,40 @@
-<img src="{{model.response.items.0.beer.beer_label}}" alt="{{model.response.items.0.beer.beer_name}}" />
-<h1>{{model.response.items.0.beer.beer_name}} ({{model.response.items.0.beer.beer_abv}}%)</h1>
-<h2>{{model.response.items.0.brewery.brewery_name}}</h2>
-<h4><em>{{model.response.items.0.beer.beer_style}}</em></h4>
+<div class="small-12 columns">
+  <h2>Search results:</h2>
 
-<p>
-  {{model.response.items.0.beer.beer_description}}
-</p>
+  <!-- Technically a barcode can have multiple results -->
+  {{#each model as |result|}}
+    <div class="media-object stack-for-small">
+      <div class="media-object-section text-center">
+        <img src="{{result.beer.beer_label}}" alt="{{result.beer.beer_name}}" />
+        <div class="beer-labels">
+          <span class="label">{{result.beer.beer_style}}</span>
+          <span class="label alert">{{result.beer.beer_abv}}%</span>
+        </div>
+      </div>
 
-<button {{action "add"}}>Add to Fridge</button>
+      <div class="media-object-section">
+        <h3>{{result.beer.beer_name}}</h3>
+        <h5>{{result.brewery.brewery_name}}</h5>
+
+
+        <div class="row">
+          <div class="small-12 large-6 columns">
+            <div class="input-group">
+              <span class="input-group-label">Quantity</span>
+              {{input value=result.quantity type="number" placeholder="1" class="input-group-field"}}
+              <div class="input-group-button">
+                <button class="button secondary" {{action "add" result}}>Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+  <hr />
+  <div class="button-group">
+    <a class="button secondary" {{action "add-beer"}}>Wrong results, scan again</a>
+    {{#link-to 'index' class="button secondary"}}Cancel{{/link-to}}
+  </div>
+</div>
