@@ -2,6 +2,7 @@
   "predef": [
     "document",
     "window",
+    "firebase",
     "-Promise"
   ],
   "browser": true,
