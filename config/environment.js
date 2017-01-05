@@ -16,7 +16,10 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    zxingEndpoint: "zxing://scan/",
+    untappdAccessToken: process.env.UNTAPPD_ACCESS_TOKEN
   };
 
   if (environment === 'development') {

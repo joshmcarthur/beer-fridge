@@ -1,0 +1,10 @@
+<img src="{{model.response.items.0.beer.beer_label}}" alt="{{model.response.items.0.beer.beer_name}}" />
+<h1>{{model.response.items.0.beer.beer_name}} ({{model.response.items.0.beer.beer_abv}}%)</h1>
+<h2>{{model.response.items.0.brewery.brewery_name}}</h2>
+<h4><em>{{model.response.items.0.beer.beer_style}}</em></h4>
+
+<p>
+  {{model.response.items.0.beer.beer_description}}
+</p>
+
+<button {{action "remove"}}>Remove from Fridge</button>
