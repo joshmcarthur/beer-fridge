@@ -1,0 +1,16 @@
+<div class="media-object stack-for-small">
+  <div class="media-object-section text-center">
+    {{beer-image beer=item.beer}}
+    {{beer-labels beer=item.beer}}
+  </div>
+
+  <div class="media-object-section">
+    {{beer-name name=item.beer.beer_name}}
+    {{brewery-name name=item.brewery.brewery_name}}
+
+    <p>{{item.beer.beer_description}}</p>
+
+    <p>{{item.quantity}} bottles</p>
+    <button class="button" {{action "consume"}}>Had One</button>
+  </div>
+</div>

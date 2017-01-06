@@ -1,5 +1,9 @@
-<div class="small-6 columns small-offset-3">
-  <h4>
-    No beers in the fridge. Click 'Add Beer' above to start scanning.
-  </h4>
-</div>
+  {{#each model as |item|}}
+    {{beer-item item=item}}
+  {{else}}
+    <div class="small-6 columns small-offset-3">
+      <div class="callout">
+        <h4>No beers in the fridge. Click 'Add Beer' above to start scanning.</h4>
+      </div>
+    </div>
+  {{/each}}

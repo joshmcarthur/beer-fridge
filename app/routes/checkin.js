@@ -13,20 +13,6 @@ export default Ember.Route.extend({
     });
   },
   actions: {
-    add(result) {
-      const quantityCheckingIn = result.quantity;
-      delete result.quantity;
-
-      const db = firebase.database();
-      const recordLocation = `beers/${result.beer.bid}`;
-      return db.ref(recordLocation).update(result)
-      .then(() => {
-        return db.ref(recordLocation + "/quantity").transaction((currentQuantity) => {
-          return (currentQuantity || 0) + parseInt(quantityCheckingIn);
-        });
-      })
-      .then(() => this.transitionTo('index'))
-      .catch((err) => alert(err));
-    }
+    added() { this.transitionTo('index'); }
   }
 });

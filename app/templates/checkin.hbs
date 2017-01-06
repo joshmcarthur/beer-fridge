@@ -3,33 +3,7 @@
 
   <!-- Technically a barcode can have multiple results -->
   {{#each model as |result|}}
-    <div class="media-object stack-for-small">
-      <div class="media-object-section text-center">
-        <img src="{{result.beer.beer_label}}" alt="{{result.beer.beer_name}}" />
-        <div class="beer-labels">
-          <span class="label">{{result.beer.beer_style}}</span>
-          <span class="label alert">{{result.beer.beer_abv}}%</span>
-        </div>
-      </div>
-
-      <div class="media-object-section">
-        <h3>{{result.beer.beer_name}}</h3>
-        <h5>{{result.brewery.brewery_name}}</h5>
-
-
-        <div class="row">
-          <div class="small-12 large-6 columns">
-            <div class="input-group">
-              <span class="input-group-label">Quantity</span>
-              {{input value=result.quantity type="number" placeholder="1" class="input-group-field"}}
-              <div class="input-group-button">
-                <button class="button secondary" {{action "add" result}}>Add</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{checkin-result result=result added="added"}}
   {{/each}}
 
   <hr />

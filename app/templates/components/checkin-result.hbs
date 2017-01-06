@@ -1,0 +1,12 @@
+<div class="media-object stack-for-small">
+  <div class="media-object-section text-center">
+    {{beer-image beer=result.beer}}
+    {{beer-labels beer=result.beer}}
+  </div>
+
+  <div class="media-object-section">
+    {{beer-name name=result.beer.beer_name}}
+    {{brewery-name name=result.brewery.brewery_name}}
+    {{quantity-field quantity=result.quantity action="add"}}
+  </div>
+</div>
