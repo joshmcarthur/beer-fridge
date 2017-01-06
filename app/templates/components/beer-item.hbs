@@ -11,6 +11,9 @@
     <p>{{item.beer.beer_description}}</p>
 
     <p>{{item.quantity}} bottles</p>
-    <button class="button" {{action "consume"}}>Had One</button>
+
+    {{#if user}}
+      <button class="button" {{action "consume"}}>Had One</button>
+    {{/if}}
   </div>
 </div>

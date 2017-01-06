@@ -1,9 +1,9 @@
   {{#each model as |item|}}
-    {{beer-item item=item}}
+    {{beer-item item=item user=user}}
   {{else}}
-    <div class="small-6 columns small-offset-3">
-      <div class="callout">
-        <h4>No beers in the fridge. Click 'Add Beer' above to start scanning.</h4>
+    <div class="small-12 medium-6 columns medium-offset-3">
+      <div class="callout warning text-center">
+        <h4>No beers in the fridge.</h4>
       </div>
     </div>
   {{/each}}

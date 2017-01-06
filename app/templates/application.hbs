@@ -8,7 +8,10 @@
 
   <div class="top-bar-right">
     <ul class="menu">
-      <li><a class="button" {{action "add-beer"}}><i class="icon">🍺</i>&nbsp;Add beer</a></li>
+      {{#if user}}
+        <li><a class="button" {{action "add-beer"}}><i class="icon">🍺</i>&nbsp;Add beer</a></li>
+        <li><a class="button secondary" {{action "unauthenticate"}}>Sign Out</a></li>
+      {{/if}}
     </ul>
   </div>
 </div>

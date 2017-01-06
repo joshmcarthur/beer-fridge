@@ -11,6 +11,9 @@ export default Ember.Route.extend({
 
       const url = ENV.zxingEndpoint + "?" + params;
       window.location.replace(url);
+    },
+    unauthenticate() {
+      firebase.auth().signOut().catch((err) => alert(err));
     }
   }
 });
