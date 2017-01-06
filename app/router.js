@@ -13,4 +13,8 @@ Router.map(function() {
   this.route("authenticate", { path: "/authenticate" });
 });
 
+Router.reopen({
+  rootURL: config.ROOT_URL
+});
+
 export default Router;
