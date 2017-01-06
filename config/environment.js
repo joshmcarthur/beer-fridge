@@ -4,8 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'beer-fridge',
     environment: environment,
-    rootUrl: process.env.ROOT_URL || "/",
-    baseUrl: process.env.ROOT_URL || "/",
+    rootURL: process.env.ROOT_URL || "/",
+    baseURL: process.env.ROOT_URL || "/",
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
