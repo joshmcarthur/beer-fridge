@@ -1,5 +1,5 @@
 <div class="media-object stack-for-small">
-  <div class="media-object-section text-center">
+  <div class="media-object-section medium-2 columns text-center">
     {{beer-image beer=item.beer}}
     {{beer-labels beer=item.beer}}
   </div>
@@ -8,7 +8,12 @@
     {{beer-name name=item.beer.beer_name}}
     {{brewery-name name=item.brewery.brewery_name}}
 
-    <p>{{item.beer.beer_description}}</p>
+    {{#if shouldShowDescription}}
+      <p>{{item.beer.beer_description}}</p>
+      <button class="button tiny" {{action "hideDescription"}}>Hide Description</button>
+    {{else}}
+      <button class="button tiny" {{action "showDescription"}}>Show Description</button>
+    {{/if }}
 
     <p>{{item.quantity}} bottles</p>
 

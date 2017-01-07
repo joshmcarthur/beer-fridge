@@ -1,7 +1,14 @@
 import Ember from "ember";
 
 export default Ember.Component.extend({
+  shouldShowDescription: false,
   actions: {
+    showDescription() {
+      this.set("shouldShowDescription", true);
+    },
+    hideDescription() {
+      this.set("shouldShowDescription", false);
+    },
     consume() {
       const item = this.get('item');
       const db = firebase.database();
