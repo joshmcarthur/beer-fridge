@@ -1,18 +1,23 @@
 import Ember from "ember";
 
 export default Ember.Route.extend({
+  ref: firebase.database().ref("beers"),
   model() {
-    return [];
+    return this.get("ref")
+      .once("value")
+      .then(this._buildCollection);
   },
   setupController(controller) {
-    const ref = firebase.database().ref("beers");
-    ref.on("value", (snapshot) => { this._buildCollection(controller, snapshot); });
+    this.get("ref").on("value", (snapshot) => {
+      controller.set("model", this._buildCollection(snapshot));
+    });
   },
-  _buildCollection(controller, snapshot) {
+  _buildCollection(snapshot) {
     const records = [];
     snapshot.forEach((childSnapshot) => {
       records.pushObject(childSnapshot.val());
     });
-    controller.set('model', records);
+
+    return records;
   }
 });
