@@ -1,0 +1,7 @@
+{{#if text}}
+  {{#if displayAll}}
+    {{text}} <a class="secondary" {{action "showOrHide"}}>(Collapse)</a>
+  {{else}}
+    {{truncatedText}}…<a class="text-secondary" {{action "showOrHide"}}>(Expand)</a>
+  {{/if}}
+{{/if}}
