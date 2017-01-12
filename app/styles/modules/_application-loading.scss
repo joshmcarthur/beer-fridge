@@ -1,0 +1,20 @@
+.application-loading {
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-name: spin;
+  animation-timing-function: linear;
+
+  font-size: 10rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+
+    } to {
+      transform: rotate(360deg);
+    }
+  }
+}
