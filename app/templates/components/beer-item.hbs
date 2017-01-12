@@ -1,10 +1,5 @@
-<div class="media-object stack-for-small">
-  <div class="media-object-section medium-2 columns text-center">
-    {{beer-image beer=item.beer}}
-    {{beer-labels beer=item.beer}}
-  </div>
-
-  <div class="media-object-section">
+<div class="media-object stack-for-small row beer-item">
+  <div class="media-object-section small-12 medium-10 medium-push-0 small-push-12 columns">
     {{beer-name name=item.beer.beer_name}}
     {{brewery-name name=item.brewery.brewery_name}}
 
@@ -20,5 +15,10 @@
     {{#if user}}
       <button class="button" {{action "consume"}}>Had One</button>
     {{/if}}
+  </div>
+
+  <div class="media-object-section small-12 medium-2 medium-pull-0 small-pull-12 columns text-center middle">
+    {{beer-image beer=item.beer}}
+    {{beer-labels beer=item.beer}}
   </div>
 </div>

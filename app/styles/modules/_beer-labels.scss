@@ -2,5 +2,16 @@
   .label {
     margin: .25rem;
     white-space: pre-wrap;
+    padding: .5rem 1rem;
+    font-size: 100%;
+    display: block;
+  }
+}
+
+.beer-item {
+  background: $white;
+
+  img {
+    margin-bottom: 1rem;
   }
 }

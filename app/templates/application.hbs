@@ -1,18 +1,20 @@
 <div class="top-bar small-12 columns">
-  <div class="top-bar-left">
-    <ul class="dropdown menu">
-      <li class="menu-text">Beer Fridge</li>
-    </ul>
-  </div>
+  <div class="row">
+    <div class="small-5 medium-8 columns">
+      <ul class="dropdown menu">
+        <li class="menu-text">Beer Fridge</li>
+      </ul>
+    </div>
 
 
-  <div class="top-bar-right">
-    <ul class="menu">
-      {{#if user}}
-        <li><a class="button" {{action "add-beer"}}><i class="icon">🍺</i>&nbsp;Add beer</a></li>
-        <li><a class="button secondary" {{action "unauthenticate"}}>Sign Out</a></li>
-      {{/if}}
-    </ul>
+    <div class="small-7 medium-4 columns">
+      <ul class="menu float-right">
+        {{#if user}}
+          <li><a class="button" {{action "add-beer"}}>Add beer</a></li>
+          <li><a class="button secondary" {{action "unauthenticate"}}>Sign Out</a></li>
+        {{/if}}
+      </ul>
+    </div>
   </div>
 </div>
 
