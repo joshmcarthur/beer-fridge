@@ -1,7 +1,13 @@
 import React from "react";
-import { Card, CardHeader, CardText, CardTitle } from "material-ui/Card";
+import {
+  Card,
+  CardActions,
+  CardHeader,
+  CardText,
+  CardTitle
+} from "material-ui/Card";
 import Chip from "material-ui/Chip";
-import Paper from "material-ui/Paper";
+import FlatButton from "material-ui/FlatButton";
 
 const styles = {
   chip: {
@@ -50,10 +56,17 @@ export default class BeerCard extends React.Component {
           subtitle={brewery.brewery_name}
         />
         <CardText expandable={true}>{beer.beer_description}</CardText>
-        <CardText expandable={true}>
+        <CardActions expandable={true}>
           <Chip style={styles.chip}>{beer.beer_style}</Chip>
           <Chip style={styles.chip}>{beer.beer_abv} %</Chip>
-        </CardText>
+        </CardActions>
+
+        <CardActions>
+          <FlatButton
+            onClick={() => this.props.onConsumed(this.props.id, -1)}
+            label="🍻 Reduce Inventory"
+          />
+        </CardActions>
       </Card>
     );
   }

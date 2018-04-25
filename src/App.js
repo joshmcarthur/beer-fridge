@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import myTheme from "./theme.js";
 import AppBar from "./components/AppBar";
 import BeerList from "./components/BeerList";
 import base from "./base";
 
 class App extends Component {
   state = {
-    beers: {},
-    selectedBeer: null
+    beers: {}
   };
   componentDidMount() {
     this.ref = base.syncState(`/beers`, {
@@ -18,13 +18,24 @@ class App extends Component {
   componentWillUnmount() {
     base.removeBinding(this.ref);
   }
-  didSelectBeer = beer => this.setState({ selectedBeer: beer });
+
+  updateInventory = (key, change) => {
+    const beers = { ...this.state.beers };
+    const beer = beers[key];
+    if (!beer) return;
+    beer.quantity = (beer.quantity || 0) + change;
+    this.setState({ beers });
+  };
+
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={myTheme}>
         <div>
           <AppBar />
-          <BeerList beers={this.state.beers} />
+          <BeerList
+            updateInventory={this.updateInventory}
+            beers={this.state.beers}
+          />
         </div>
       </MuiThemeProvider>
     );
