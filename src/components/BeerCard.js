@@ -35,6 +35,16 @@ export default class BeerCard extends React.Component {
     this.setState({ expanded: expanded });
   };
 
+  cardActions = () => {
+    if (!this.props.user) return null;
+    return (
+      <FlatButton
+        onClick={() => this.props.onConsumed(this.props.id, -1)}
+        label="🍻 Reduce Inventory"
+      />
+    );
+  };
+
   render() {
     const { beer, brewery, quantity } = this.props;
     return (
@@ -60,13 +70,7 @@ export default class BeerCard extends React.Component {
           <Chip style={styles.chip}>{beer.beer_style}</Chip>
           <Chip style={styles.chip}>{beer.beer_abv} %</Chip>
         </CardActions>
-
-        <CardActions>
-          <FlatButton
-            onClick={() => this.props.onConsumed(this.props.id, -1)}
-            label="🍻 Reduce Inventory"
-          />
-        </CardActions>
+        <CardActions>{this.cardActions()}</CardActions>
       </Card>
     );
   }
