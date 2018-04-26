@@ -3,8 +3,10 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import firebase from "firebase";
 import myTheme from "./theme.js";
 import AppBar from "./components/AppBar";
+import { BrowserRouter, Route } from "react-router-dom";
 import AccountControl from "./components/AccountControl";
 import BeerList from "./components/BeerList";
+import AddBeerForm from "./components/AddBeerForm";
 import AddBeerButton from "./components/AddBeerButton";
 import base, { firebaseApp } from "./base";
 
@@ -52,34 +54,53 @@ class App extends Component {
   };
 
   scanBarcode = () => {
-    alert("Scan barcode here!");
+    const returnUrl = `http://${window.location.host}/checkin?barcode={CODE}`;
+    const url = `zxing://scan/?ret=${encodeURIComponent(
+      returnUrl
+    )}&SCAN_FORMATS=EAN_13,UPC_A`;
+    window.location = url;
+  };
+
+  BeerManagement = () => {
+    return (
+      <div>
+        <BeerList
+          updateInventory={this.updateInventory}
+          user={this.state.currentUser}
+          scanNew={this.scanBarCode}
+          isLoading={this.state.loading}
+          beers={this.state.beers}
+        />
+        <AddBeerButton
+          user={this.state.currentUser}
+          onClick={this.scanBarcode}
+        />
+      </div>
+    );
   };
 
   render() {
     return (
       <MuiThemeProvider muiTheme={myTheme}>
-        <div>
-          <AppBar
-            iconElementRight={
-              <AccountControl
-                authenticate={this.authenticate}
-                logout={this.logout}
-                user={this.state.currentUser}
-              />
-            }
-          />
+        <BrowserRouter>
+          <div>
+            <AppBar
+              iconElementRight={
+                <AccountControl
+                  authenticate={this.authenticate}
+                  logout={this.logout}
+                  user={this.state.currentUser}
+                />
+              }
+            />
 
-          <BeerList
-            updateInventory={this.updateInventory}
-            user={this.state.currentUser}
-            isLoading={this.state.loading}
-            beers={this.state.beers}
-          />
-          <AddBeerButton
-            user={this.state.currentUser}
-            onClick={this.scanBarcode}
-          />
-        </div>
+            <Route exact path="/" render={this.BeerManagement} />
+            <Route
+              path="/checkin"
+              render={props => <AddBeerForm {...props} save={this.addBeer} />}
+            />
+          </div>
+        </BrowserRouter>
       </MuiThemeProvider>
     );
   }
