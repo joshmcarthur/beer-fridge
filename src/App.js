@@ -62,6 +62,16 @@ class App extends Component {
     window.location = url;
   };
 
+  addOrUpdateBeer = beerRecord => {
+    const records = { ...this.state.beers };
+    const existingRecord = records[beerRecord.beer.bid];
+    if (existingRecord) {
+      existingRecord.quantity += beerRecord.quantity;
+    }
+    records[beerRecord.beer.bid] = existingRecord || beerRecord;
+    this.setState({ beers: records });
+  };
+
   BeerManagement = () => {
     return (
       <div>
@@ -98,7 +108,9 @@ class App extends Component {
             <Route exact path="/" render={this.BeerManagement} />
             <Route
               path="/checkin"
-              render={props => <AddBeerForm {...props} save={this.addBeer} />}
+              render={props => (
+                <AddBeerForm {...props} save={this.addOrUpdateBeer} />
+              )}
             />
           </div>
         </BrowserRouter>
