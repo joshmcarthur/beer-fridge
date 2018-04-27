@@ -29,7 +29,7 @@ export default class BeerCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: this.props.expanded || false
     };
   }
 
@@ -60,7 +60,9 @@ export default class BeerCard extends React.Component {
           subtitle={`${quantity} in stock`}
           avatar={beer.beer_label}
           actAsExpander={true}
-          showExpandableButton={true}
+          showExpandableButton={
+            this.props.expandable === undefined ? true : this.props.expandable
+          }
         />
         <CardTitle
           expandable={true}
