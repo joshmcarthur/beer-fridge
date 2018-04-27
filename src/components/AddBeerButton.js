@@ -6,7 +6,8 @@ import spacing from "material-ui/styles/spacing";
 const style = {
   position: "fixed",
   bottom: spacing.desktopGutter,
-  right: spacing.desktopGutter
+  right: spacing.desktopGutter,
+  zIndex: 100
 };
 
 const AddBeerButton = props => {
