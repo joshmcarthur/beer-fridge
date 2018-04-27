@@ -65,16 +65,16 @@ class App extends Component {
   BeerManagement = () => {
     return (
       <div>
+        <AddBeerButton
+          user={this.state.currentUser}
+          onClick={this.scanBarcode}
+        />
         <BeerList
           updateInventory={this.updateInventory}
           user={this.state.currentUser}
           scanNew={this.scanBarCode}
           isLoading={this.state.loading}
           beers={this.state.beers}
-        />
-        <AddBeerButton
-          user={this.state.currentUser}
-          onClick={this.scanBarcode}
         />
       </div>
     );
