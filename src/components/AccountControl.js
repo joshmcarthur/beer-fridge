@@ -9,7 +9,7 @@ import { white } from "material-ui/styles/colors";
 
 const LoggedIn = props => (
   <IconMenu
-    {...props}
+    iconStyle={props.iconStyle}
     iconButtonElement={
       <IconButton>
         <MoreVertIcon />
