@@ -23,6 +23,8 @@ const styles = {
   }
 };
 
+export { styles };
+
 export default class BeerCard extends React.Component {
   constructor(props) {
     super(props);
