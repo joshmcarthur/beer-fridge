@@ -57,7 +57,7 @@ export default class BeerCard extends React.Component {
       >
         <CardHeader
           title={beer.beer_name}
-          subtitle={`${quantity} in stock`}
+          subtitle={quantity ? `${quantity} in stock` : null}
           avatar={beer.beer_label}
           actAsExpander={true}
           showExpandableButton={
