@@ -1,17 +1,9 @@
 import React from "react";
 import BeerCard from "./BeerCard";
-import CircularProgress from "material-ui/CircularProgress";
-
-const progressStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%"
-};
+import ProgressIndicator from "./ProgressIndicator";
 
 const BeerList = ({ isLoading, user, beers, updateInventory }) => {
-  if (isLoading) {
-    return <CircularProgress style={progressStyle} />;
-  }
+  if (isLoading) return <ProgressIndicator />;
   return Object.keys(beers).map(key => (
     <BeerCard
       id={key}
