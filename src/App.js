@@ -37,6 +37,7 @@ class App extends Component {
     const beer = beers[key];
     if (!beer) return;
     beer.quantity = (beer.quantity || 0) + change;
+    if (beer.quantity < 1) beers[key] = null;
     this.setState({ beers });
   };
 
